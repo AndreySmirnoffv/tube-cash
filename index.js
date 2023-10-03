@@ -6,26 +6,23 @@ const bot = new TelegramBot(
   { polling: true }
 );
 const fs = require("fs");
-const { chatStates} = require("./assets/keyboard/keyboard");
+const {chatStates} = require("./assets/keyboard/keyboard");
 const {withdrawCommand} = require('./assets/scripts/withDraw')
 const {handleStartCommand} = require('./assets/scripts/commands/startCommand')
 const {handleEarnCommand} = require('./assets/scripts/commands/hadleEarnCommand')
 const {handleMyCabinetCommand} = require("./assets/scripts/commands/handleMyCabinetCommans")
+const {show, countries} =  require("./assets/scripts/commands/handleMyCabinetCommans")
 
 const commands = JSON.parse(fs.readFileSync("./assets/db/commands/commands.json"));
 
 bot.setMyCommands(commands);
 
 bot.on("message", async (msg) => {
-  const chatId = msg.chat.id
-  if (msg.text === "/start") handleStartCommand(msg);
-    else if (msg.text === "ЗАРАБОТАТЬ") handleEarnCommand(msg);
-    else if (msg.text === "МОЙ КАБИНЕТ") handleMyCabinetCommand(msg);
-    else if (msg.text === "ВЫВОД") withdrawCommand(msg);
-    else{
-      await bot.sendMessage(msg.chat.id, "такой команды не существует")
-    }
-  
+  if (msg.text === "/start") await bot.sendMessage(msg.chat.id, "Привет", countries)
+    // else if (msg.text === "ЗАРАБОТАТЬ") handleEarnCommand(msg);
+    // else if (msg.text === "МОЙ КАБИНЕТ") handleMyCabinetCommand(msg);
+    // else if (msg.text === "ВЫВОД") withdrawCommand(msg);
+    else await bot.sendMessage(msg.chat.id, "такой команды не существует")
 });
 
 bot.on("callback_query", async (callbackQuery) => {
@@ -36,7 +33,7 @@ bot.on("callback_query", async (callbackQuery) => {
     chatStates[chatId].currentPage--; 
   } else if (data === "next") {
     chatStates[chatId].currentPage++;
-  }
+  }else if (data === 'Англия') await bot.sendMessage(msg.chat.id, "пошел собирать статистику")
 });
 
 bot.on("polling_error", console.log);

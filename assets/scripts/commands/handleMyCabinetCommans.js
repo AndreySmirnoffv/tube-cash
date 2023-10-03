@@ -1,6 +1,6 @@
 const users = require('../../db/db.json')
 
-export async function handleMyCabinetCommand(msg) {
+async function handleMyCabinetCommand(msg) {
     const chatId = msg.chat.id;
     let user = users.find(x => x.user_id === msg.chat.id);
   

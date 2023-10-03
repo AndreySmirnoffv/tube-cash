@@ -46,7 +46,7 @@ module.exports = {
       resize_keyboard: true,
       keyboard: [
         [{ text: "ЗАРАБОТАТЬ" }, { text: "МОЙ КАБИНЕТ" }],
-        [{ text: "О БОТК" }, { text: "ВЫВОД" }],
+        [{ text: "О БОТЕ" }, { text: "ВЫВОД" }],
       ],
     }),
   },
@@ -66,6 +66,21 @@ module.exports = {
         [{ text: "hello world", callback: "3" }],
       ],
     }),
+  },
+  show: {
+    reply_markup: JSON.stringify({
+      keyboard: [
+        [{text: "Выбрать страну"}]
+      ]
+    })
+  },
+  countries: {
+    reply_markup: JSON.stringify({
+      resize_keyboard: true,
+      inline_keyboard: [
+        {text: "Англия", callback: "england"}
+      ]
+    })
   },
   readKeyBoardData: readKeyBoardData,
   sendKeyboards: sendKeyboards,
