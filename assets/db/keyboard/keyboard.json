@@ -1,0 +1,12 @@
+[
+  {
+    "firstPageKeyboard": [
+      { "text": "Кнопка 1 (Стр. 1)", "callback_data": "button1" },
+      { "text": "Кнопка 2 (Стр. 1)", "callback_data": "button2" }
+    ],
+    "secondPageKeyboard": [
+      { "text": "Кнопка 3 (Стр. 2)", "callback_data": "button3" },
+      { "text": "Кнопка 4 (Стр. 2)", "callback_data": "button4" }
+    ]
+  }
+]

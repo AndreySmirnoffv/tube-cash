@@ -1,0 +1,14 @@
+[
+    {
+        "command": "start",
+        "description": "Запустить бота"
+    },
+    {
+        "command": "help",
+        "description": "Помощь"
+    },
+    {
+        "command": "customcommand",
+        "description": "Пользовательская команда"
+    }
+]
