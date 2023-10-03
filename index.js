@@ -11,17 +11,16 @@ const {withdrawCommand} = require('./assets/scripts/withDraw')
 const {handleStartCommand} = require('./assets/scripts/commands/startCommand')
 const {handleEarnCommand} = require('./assets/scripts/commands/hadleEarnCommand')
 const {handleMyCabinetCommand} = require("./assets/scripts/commands/handleMyCabinetCommans")
-const {show, countries} =  require("./assets/scripts/commands/handleMyCabinetCommans")
 
 const commands = JSON.parse(fs.readFileSync("./assets/db/commands/commands.json"));
 
 bot.setMyCommands(commands);
 
 bot.on("message", async (msg) => {
-  if (msg.text === "/start") await bot.sendMessage(msg.chat.id, "Привет", countries)
-    // else if (msg.text === "ЗАРАБОТАТЬ") handleEarnCommand(msg);
-    // else if (msg.text === "МОЙ КАБИНЕТ") handleMyCabinetCommand(msg);
-    // else if (msg.text === "ВЫВОД") withdrawCommand(msg);
+  if (msg.text === "/start") handleStartCommand()
+    else if (msg.text === "ЗАРАБОТАТЬ") handleEarnCommand(msg);
+    else if (msg.text === "МОЙ КАБИНЕТ") handleMyCabinetCommand(msg);
+    else if (msg.text === "ВЫВОД") withdrawCommand(msg);
     else await bot.sendMessage(msg.chat.id, "такой команды не существует")
 });
 
